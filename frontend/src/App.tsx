@@ -1,12 +1,15 @@
+import Header from "./components/Header"
+import Router from "./Router"
 
 function App() {
 
   return (
     <>
-      <h1>Game Library</h1>
+      <Header />
+      <Router />
     </>
+
   )
 }
 
 export default App
-  
