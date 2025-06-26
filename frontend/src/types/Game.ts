@@ -5,19 +5,21 @@ export interface Game {
   category: string;
   price: number;
   rating: number;
-  stock: number;
-  tags: string[];
+  stock?: number;
+  tags?: string[];
   brand: string;
-  reviews: Reviews[];
-  meta: Meta;
-  images: string[];
-  thumbnail: string;
+  reviews?: Review[];
+  meta?: Meta;
+  images?: string[];
+  thumbnail?: string;
 }
 
-export interface Reviews {
-  rating: 2;
+export type GamePayload = Omit<Game, 'id'>
+
+export interface Review {
+  rating: number;
   comment: string;
-  date: Date;
+  date: string;
   reviewerName: string;
   reviewerEmail: string;
 }
@@ -29,3 +31,24 @@ export interface Meta {
   qrCode: string;
 }
 
+export interface FetchGamesParams {
+  search?: string;
+  sortBy?: string;
+  order?: "asc" | "desc";
+  limit?: number;
+  skip?: number;
+  select?: string;
+}
+
+export interface Category {
+  slug: string;
+  name: string;
+  url: string;
+}
+
+export interface ProductsByCategoryPaginatedResponse {
+  limit: number;
+  skip: number;
+  total: number;
+  games?: Game[]; // ?if there is category without elements
+}
