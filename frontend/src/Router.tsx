@@ -9,7 +9,7 @@ const Router = () => {
     <Routes>
       <Route path='/' element={<HomePage />}/>
       <Route path='/game/add' element={<AddGamePage />}/>
-      <Route path='/game:id' element={<GameDetailPage />}/>
+      <Route path='/game/:id' element={<GameDetailPage />}/>
       <Route path='/game/edit/:id' element={<EditGamePage />}/>
     </Routes>
   )

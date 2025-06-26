@@ -1,4 +1,4 @@
-import { type Category, type Game, type Meta, type ProductsByCategoryPaginatedResponse, type Review } from "../types/Game";
+import { type Category, type Game, type GamesPaginatedResponse, type Meta, type ProductsByCategoryPaginatedResponse, type Review } from "../types/Game";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -28,6 +28,13 @@ export const transformGameBase = (game: any) => ({
 export const transformGameToView = (game: any): Game => ({
   id: game.id,
   ...transformGameBase(game)
+});
+
+export const transformGamesPaginatedResponseToView = (result: any): GamesPaginatedResponse => ({
+  games: result.products.map(transformGameToView),
+  total: result.total,
+  skip: result.skip,
+  limit: result.limit,
 });
 
 export const transfomReview = (reviewObject: any): Review => {

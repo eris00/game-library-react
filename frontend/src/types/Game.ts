@@ -14,6 +14,13 @@ export interface Game {
   thumbnail?: string;
 }
 
+export interface GamesPaginatedResponse {
+  games: Game[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
 export type GamePayload = Omit<Game, 'id'>
 
 export interface Review {
@@ -50,5 +57,17 @@ export interface ProductsByCategoryPaginatedResponse {
   limit: number;
   skip: number;
   total: number;
-  games?: Game[]; // ?if there is category without elements
+  games?: Game[]; // ?if there is category without elements (games)
+}
+
+export interface GamesState {
+  games: Game[];
+  total: number;
+  loading: boolean;
+  error: string | null;
+  search: string;
+  sortBy: string;
+  order: 'asc' | 'desc';
+  page: number;
+  limit: number;
 }

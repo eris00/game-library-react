@@ -1,6 +1,6 @@
 import axios from "axios";
-import { type FetchGamesParams, type Game, type Category, type ProductsByCategoryPaginatedResponse, type GamePayload } from "../types/Game";
-import { transformCategoriesToView, transformGameToView, transformProductsByCategoryResponse } from "../transformers/GameTransformer";
+import { type FetchGamesParams, type Game, type Category, type ProductsByCategoryPaginatedResponse, type GamePayload, type GamesPaginatedResponse } from "../types/Game";
+import { transformCategoriesToView, transformGamesPaginatedResponseToView, transformGameToView, transformProductsByCategoryResponse } from "../transformers/GameTransformer";
 
 const BASE_URL = "https://dummyjson.com/products";
 const GET_GAME_URL = (gameId: number): string => `${BASE_URL}/${gameId}`;
@@ -10,7 +10,7 @@ const ADD_GAME_PATH = `${BASE_URL}/add`;
 const UPDATE_GAME_PATH = (gameId: number) => `${BASE_URL}/${gameId}`;
 
 
-const fetchAllGames = async (params: FetchGamesParams = {}): Promise<Game[]> => {
+const fetchAllGames = async (params: FetchGamesParams = {}): Promise<GamesPaginatedResponse> => {
   // Build the request URL with given query paremeters
   const { search, sortBy, order, limit, skip, select} = params;
   let url = BASE_URL;
@@ -28,7 +28,7 @@ const fetchAllGames = async (params: FetchGamesParams = {}): Promise<Game[]> => 
 
   try {
     const res = await axios.get(url);
-    return res.data.products.map(transformGameToView);
+    return transformGamesPaginatedResponseToView(res.data);
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
