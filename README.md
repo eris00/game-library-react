@@ -7,10 +7,13 @@ Game Library is web application for private game collection
 ## Technologies Used
 
 - **React + Vite**
+- *TypeScript**
 - **Redux Toolkit** — global state management
-- **TanStack Query** — API data fetching and caching
-- **React Hook Form + Zod** — advanced form handling and validation
-- **Tailwind CSS** — utility-first styling and fully responsive design
+- **TanStack Query** — API data fetching, error and loading state management
+- **React Hook Form + Zod** — form handling and validation
+- **axios** — for making HTTP requests
+- **Tailwind CSS** — for styling and responsive
+-  **pnpm** - preformant npm
 
 ---
 
@@ -39,8 +42,6 @@ Game Library is web application for private game collection
 4. Open your browser at [http://localhost:5173](http://localhost:5173) (or whichever port is displayed in the terminal).
 
 ---
-
-## Features
 
 ## Notes
 
