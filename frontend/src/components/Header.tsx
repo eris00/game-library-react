@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
-    <header className="bg-gray-900 px-4 sm:px-8 py-4 flex flex-col sm:flex-row items-center justify-between">
+    <header className="bg-gray-800 px-4 sm:px-24 py-4 flex flex-col sm:flex-row items-center justify-between sticky top-0 z-50 shadow">
       <span className="text-yellow-400 font-bold text-2xl tracking-tight hover:opacity-80 transition">
         <Link to="/">GamesLib</Link>
       </span>

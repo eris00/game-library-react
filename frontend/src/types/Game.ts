@@ -71,3 +71,8 @@ export interface GamesState {
   page: number;
   limit: number;
 }
+
+export type GameFormFields = Omit<GamePayload, "tags" | "images"> & {
+  tags?: string;
+  images?: string;
+};
